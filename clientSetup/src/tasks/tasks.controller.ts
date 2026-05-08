@@ -3,12 +3,10 @@ import { TasksService } from './tasks.service';
 
 @Controller('tasks')
 export class TasksController {
-    constructor(
-        private tasksService: TasksService
-    ) { }
+  constructor(private tasksService: TasksService) {}
 
-    @Get()
-    async getAllTasks() {
-        return this.tasksService.getAllTasks();
-    }
+  @Get()
+  async getAllTasks() {
+    return this.tasksService.getAllTasks();
+  }
 }

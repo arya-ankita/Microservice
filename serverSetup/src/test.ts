@@ -1,3 +1,3 @@
-const path = require ("path");
+const path = require('path');
 
 console.log(path.join(__dirname, '../src/protos/tasks.proto'));

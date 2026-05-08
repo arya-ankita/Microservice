@@ -20,6 +20,6 @@ import { CommonFunctionService } from 'src/utilities/common.service';
     ]),
   ],
   providers: [TasksService, CommonFunctionService],
-  controllers: [TasksController]
+  controllers: [TasksController],
 })
-export class TasksModule { }
+export class TasksModule {}

@@ -1,23 +1,14 @@
 import { Controller } from '@nestjs/common';
-import { TasksService } from './tasks.service';
-import { Task } from './task.entity';
 import { GrpcMethod } from '@nestjs/microservices';
-import { TaskRepository } from './task.repository';
-import { InjectRepository } from '@nestjs/typeorm';
+import { TasksService } from './tasks.service';
 
-
-@Controller('tasks')
+@Controller()
 export class TasksController {
-    constructor(
+  constructor(private readonly tasksService: TasksService) {}
 
-        @InjectRepository(TaskRepository)
-        private taskRepository: TaskRepository
-    ) { }
-
-    @GrpcMethod('TasksService', 'getAll')
-    async getTasks(): Promise<any> {
-        const result = await this.taskRepository.find();
-        console.log("===================", result);
-       return {tasks:result};
-    }
+  @GrpcMethod('TasksService', 'getAll')
+  async getTasks() {
+    const result = await this.tasksService.findAll();
+    return { tasks: result };
+  }
 }

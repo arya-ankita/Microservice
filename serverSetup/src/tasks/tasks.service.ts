@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { TaskRepository } from './task.repository';
-import { TypeOrmCrudService } from "@nestjsx/crud-typeorm";
-import { Task } from "./task.entity";
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Task } from './task.entity';
 
 @Injectable()
-export class TasksService extends TypeOrmCrudService<Task> {
+export class TasksService {
+  constructor(
+    @InjectRepository(Task)
+    private taskRepository: Repository<Task>,
+  ) {}
 
-    constructor(
-        @InjectRepository(TaskRepository)
-        private taskRepository: TaskRepository
-    ) {
-        super(taskRepository);
-    }
+  findAll() {
+    return this.taskRepository.find();
+  }
 }

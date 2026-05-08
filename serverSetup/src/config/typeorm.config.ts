@@ -1,10 +1,11 @@
-import { TypeOrmModuleOptions } from "@nestjs/typeorm";
+/* eslint-disable prettier/prettier */
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 dotenv.config({ path: path.join(__dirname, '../../src/.env') });
 
 export const typeOrmConfig: TypeOrmModuleOptions = {
-    type: process.env.DATABASE_CONNECTION as 'mysql',
+    type: process.env.DATABASE_CONNECTION as 'postgres',
     host: process.env.DATABASE_HOST,
     port: Number(process.env.DATABASE_PORT),
     username: process.env.DATABASE_USERNAME,

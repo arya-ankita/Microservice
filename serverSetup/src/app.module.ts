@@ -9,23 +9,20 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
 import { join } from 'path';
 
 @Module({
-  imports: [
-    TypeOrmModule.forRoot(typeOrmConfig),
-     TasksModule
-  ],
+  imports: [TypeOrmModule.forRoot(typeOrmConfig), TasksModule],
   controllers: [AppController],
   providers: [],
 })
-export class AppModule { }
+export class AppModule {}
 
 // ClientsModule.register([
-    //   {
-    //     name: 'HERO_PACKAGE',
-    //     transport: Transport.GRPC,
-    //     options: {
-    //       url: `localhost:3004`,
-    //       package: 'hero',
-    //       protoPath: join(__dirname, 'hero/hero.proto'),
-    //     },
-    //   },
-    // ]),
+//   {
+//     name: 'HERO_PACKAGE',
+//     transport: Transport.GRPC,
+//     options: {
+//       url: `localhost:3004`,
+//       package: 'hero',
+//       protoPath: join(__dirname, 'hero/hero.proto'),
+//     },
+//   },
+// ]),
